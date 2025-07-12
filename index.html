@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Important Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>body{margin:0;background:black;color:white;display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;}h2{font-size:1.5em;}</style>
+</head>
+<body onload="startPrank()">
+  <h2>Loading PDF... Please wait</h2>
+  <audio id="moan" autoplay>
+    <source src="moan.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    function startPrank() {
+      const audio = document.getElementById('moan');
+      audio.volume = 1.0;
+      audio.play();
+      history.pushState(null, null, location.href);
+      window.onpopstate = () => history.go(1);
+      setTimeout(() => {
+        window.onpopstate = null;
+        document.body.innerHTML = "<h2>File loaded successfully 😊</h2>";
+      }, 20000);
+    }
+  </script>
+</body>
+</html>
